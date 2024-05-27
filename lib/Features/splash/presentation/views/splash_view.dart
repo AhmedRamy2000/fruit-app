@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruitapp/Features/splash/presentation/views/widget/splash_view_body.dart';
 
 class SplashView extends StatelessWidget {
   static const routeName = 'splash';
@@ -6,6 +7,8 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: SplashViewBody()
+    );
   }
 }

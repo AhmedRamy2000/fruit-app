@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
-import 'package:fruitapp/core/utils/app_styles.dart';
 import 'package:svg_flutter/svg.dart';
+
+import '../../../../../core/utils/text_styles.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
-      {super.key,
+      {super.key,required this.isVisible,
       required this.image,
       required this.background,
       required this.subtitle,
@@ -13,6 +14,7 @@ class PageViewItem extends StatelessWidget {
   final String image, background;
   final String subtitle;
   final Widget title;
+  final bool isVisible;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,14 +28,18 @@ class PageViewItem extends StatelessWidget {
                   child: SvgPicture.asset(fit: BoxFit.fill, background)),
               Positioned(
                   bottom: 0, left: 0, right: 0, child: SvgPicture.asset(image)),
-              Padding(
+              Visibility(
+    visible: isVisible,
+    child:  Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   'تخط',
-                  style: AppStyles.textStyleRegular
-                      .copyWith(fontSize: 13, color: AppColors.grey400),
+                  style: TextStyles.regular13
+                      .copyWith(
+                      color: AppColors.grey400),
                 ),
-              ),
+              ),)
+
             ],
           ),
         ),
@@ -45,12 +51,12 @@ class PageViewItem extends StatelessWidget {
           height: 24,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 37),
           child: Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: AppStyles.textStyleRegular.copyWith(
-                          fontSize: 13, color: AppColors.textColor)
+            style: TextStyles.semibold13.copyWith(
+                          color: AppColors.gray500)
           ),
         )
       ],

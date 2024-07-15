@@ -2,24 +2,76 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruitapp/Features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
+import 'package:fruitapp/core/widgets/custom_buttom.dart';
 
-class OnBoardingBody extends StatelessWidget {
+class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({super.key});
+
+  @override
+  State<OnBoardingBody> createState() => _OnBoardingBodyState();
+}
+
+class _OnBoardingBodyState extends State<OnBoardingBody> {
+  late PageController pageController;
+  int currentPage = 0;
+
+  @override
+  @override
+  void initState() {
+    pageController = PageController();
+    pageController.addListener(() {
+      currentPage = pageController.page!.round();
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Expanded(child: OnBoardingPageView()),
+        Expanded(
+            child: OnBoardingPageView(
+          pageController: pageController,
+        )),
         DotsIndicator(
           dotsCount: 2,
           decorator: DotsDecorator(
               activeColor: AppColors.primaryColor,
-              color: AppColors.primaryColor.withOpacity(0.5)),
+              color: currentPage == 1
+                  ? AppColors.primaryColor
+                  : AppColors.primaryColor.withOpacity(0.5)),
         ),
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height / 8,
-        )
+        const SizedBox(
+          height: 16,
+        ),
+        Visibility(
+          visible: currentPage == 1 ? true : false,
+          maintainSize: true,
+          maintainAnimation: true,
+          maintainState: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CustomButton(
+              onPressed: () {},
+              text: 'ابدأ الان',
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+
+        // SizedBox(
+        //   height: MediaQuery.sizeOf(context).height / 8,
+        // )
       ],
     );
   }

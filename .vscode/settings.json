@@ -1,4 +1,13 @@
 {
     "cmake.sourceDirectory": "/home/ahmedramy/FlutterProjects/Fruit-app/linux/flutter",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cSpell.words": [
+        "khorizontal",
+        "Perferences",
+        "بواسطة",
+        "تسجيل",
+        "جوجل",
+        "دخول",
+        "فيسبوك"
+    ]
 }

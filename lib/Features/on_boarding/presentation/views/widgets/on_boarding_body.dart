@@ -1,6 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruitapp/Features/auth/presentation/view/login_view.dart';
 import 'package:fruitapp/Features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
+import 'package:fruitapp/core/constants.dart';
+import 'package:fruitapp/core/services/shared_perferences_singleton.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
 import 'package:fruitapp/core/widgets/custom_buttom.dart';
 
@@ -58,10 +61,14 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           maintainAnimation: true,
           maintainState: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: khorizontalPadding),
             child: CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                SPS.setBool(kisFirstVisit, true);
+                Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+              },
               text: 'ابدأ الان',
+              textStyle: const TextStyle(color: Colors.white),
             ),
           ),
         ),

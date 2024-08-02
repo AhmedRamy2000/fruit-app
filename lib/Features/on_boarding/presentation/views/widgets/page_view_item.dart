@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruitapp/Features/auth/presentation/view/login_view.dart';
+import 'package:fruitapp/core/constants.dart';
+import 'package:fruitapp/core/services/shared_perferences_singleton.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -6,7 +9,8 @@ import '../../../../../core/utils/text_styles.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
-      {super.key,required this.isVisible,
+      {super.key,
+      required this.isVisible,
       required this.image,
       required this.background,
       required this.subtitle,
@@ -29,17 +33,23 @@ class PageViewItem extends StatelessWidget {
               Positioned(
                   bottom: 0, left: 0, right: 0, child: SvgPicture.asset(image)),
               Visibility(
-    visible: isVisible,
-    child:  Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  'تخط',
-                  style: TextStyles.regular13
-                      .copyWith(
-                      color: AppColors.grey400),
+                visible: isVisible,
+                child: GestureDetector(
+                  onTap: () {
+                    SPS.setBool(kisFirstVisit, true);
+                    Navigator.of(context)
+                        .pushReplacementNamed(LoginView.routeName);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      'تخط',
+                      style: TextStyles.regular13
+                          .copyWith(color: AppColors.grey400),
+                    ),
+                  ),
                 ),
-              ),)
-
+              )
             ],
           ),
         ),
@@ -52,12 +62,9 @@ class PageViewItem extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 37),
-          child: Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: TextStyles.semibold13.copyWith(
-                          color: AppColors.gray500)
-          ),
+          child: Text(subtitle,
+              textAlign: TextAlign.center,
+              style: TextStyles.semibold13.copyWith(color: AppColors.gray500)),
         )
       ],
     );

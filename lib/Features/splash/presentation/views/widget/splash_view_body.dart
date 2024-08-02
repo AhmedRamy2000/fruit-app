@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruitapp/Features/auth/presentation/view/login_view.dart';
 import 'package:fruitapp/Features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:fruitapp/core/constants.dart';
+import 'package:fruitapp/core/services/shared_perferences_singleton.dart';
 import 'package:fruitapp/core/utils/assets.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -40,8 +43,13 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   void excuteNaviagtion() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+    bool isFirstVisit = SPS.getBool(kisFirstVisit);
+    Future.delayed(const Duration(seconds: 1), () {
+      if (isFirstVisit) {
+        Navigator.pushReplacementNamed(context, LoginView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      }
     });
   }
 }

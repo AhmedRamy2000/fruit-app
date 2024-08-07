@@ -30,14 +30,14 @@ class SignUpViewBody extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            CustomTestFromField(
+            const CustomTestFromField(
               hintText: 'البريد الإلكتروني',
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(
               height: 24,
             ),
-            CustomTestFromField(
+            const CustomTestFromField(
               hintText: 'كلمة المرور',
               keyboardType: TextInputType.visiblePassword,
               suffixIcon:

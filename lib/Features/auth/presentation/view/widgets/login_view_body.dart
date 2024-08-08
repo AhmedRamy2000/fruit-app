@@ -6,7 +6,7 @@ import 'package:fruitapp/core/constants.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
 import 'package:fruitapp/core/utils/text_styles.dart';
 import 'package:fruitapp/core/widgets/app_fields/custom_text_field.dart';
-import 'package:fruitapp/core/widgets/custom_buttom.dart';
+import 'package:fruitapp/core/widgets/custom_button.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -21,14 +21,14 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            CustomTestFromField(
+            const CustomTestFromField(
               hintText: 'البريد الإلكتروني',
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(
               height: 24,
             ),
-            CustomTestFromField(
+            const CustomTestFromField(
               hintText: 'كلمة المرور',
               keyboardType: TextInputType.visiblePassword,
               suffixIcon: Icon(Icons.remove_red_eye, color: AppColors.iconColor),

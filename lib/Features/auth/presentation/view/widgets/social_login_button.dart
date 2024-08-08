@@ -16,18 +16,18 @@ class SocialLoginButton extends StatelessWidget {
       height: 56,
       child: TextButton(
           onPressed: onPressed,
+          style: TextButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  side:const BorderSide(color: AppColors.dividerColor, width: 1),
+                  borderRadius: BorderRadius.circular(16))),
           child: ListTile(
               visualDensity:
-                  VisualDensity(vertical: VisualDensity.minimumDensity),
+                  const VisualDensity(vertical: VisualDensity.minimumDensity),
               leading: SvgPicture.asset(image),
               title: Text(label,
                   textAlign: TextAlign.center,
                   style: TextStyles.semibold16
-                      .copyWith(color: AppColors.textColor))),
-          style: TextButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(color: AppColors.dividerColor, width: 1),
-                  borderRadius: BorderRadius.circular(16)))),
+                      .copyWith(color: AppColors.textColor)))),
     );
   }
 }

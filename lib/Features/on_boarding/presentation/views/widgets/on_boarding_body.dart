@@ -5,7 +5,7 @@ import 'package:fruitapp/Features/on_boarding/presentation/views/widgets/on_boar
 import 'package:fruitapp/core/constants.dart';
 import 'package:fruitapp/core/services/shared_perferences_singleton.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
-import 'package:fruitapp/core/widgets/custom_buttom.dart';
+import 'package:fruitapp/core/widgets/custom_button.dart';
 
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({super.key});

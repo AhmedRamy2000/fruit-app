@@ -5,9 +5,10 @@ import 'package:svg_flutter/svg.dart';
 
 class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton(
-      {super.key, required this.label, this.onPressed, required this.image});
+      {super.key, required this.label, this.onPressed, required this.image,this.enable=true});
   final String label;
   final String image;
+  final bool enable;
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class SocialLoginButton extends StatelessWidget {
       child: TextButton(
           onPressed: onPressed,
           style: TextButton.styleFrom(
+            backgroundColor:enable ? Colors.white: Colors.grey.withOpacity(0.4),
               shape: RoundedRectangleBorder(
                   side:const BorderSide(color: AppColors.dividerColor, width: 1),
                   borderRadius: BorderRadius.circular(16))),

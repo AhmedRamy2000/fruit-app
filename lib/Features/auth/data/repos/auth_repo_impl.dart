@@ -22,7 +22,7 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure(e.message));
     } catch (e) {
       log('Exception in createUserWithEmailAndPassword: $e');
-      return left(ServerFailure('لقد قمت بالتسجيل مسبقا'));
+      return left(ServerFailure("لقد حدث خطأ ما الرجاء المحاوله مرة اخري"));
     }
   }
 
@@ -37,7 +37,45 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure(e.message));
     } catch (e) {
       log('Exception in createUserWithEmailAndPassword: $e');
-      return left(ServerFailure('لقد قمت بالتسجيل مسبقا'));
+      return left(ServerFailure("لقد حدث خطأ ما الرجاء المحاوله مرة اخري"));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in signInWithGoogle: $e');
+      return left(ServerFailure("لقد حدث خطأ ما الرجاء المحاوله مرة اخري"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthService.signInWithFacebook();
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in signInWithFacebook: $e');
+      return left(ServerFailure("لقد حدث خطأ ما الرجاء المحاوله مرة اخري"));
+    }
+  }
+  // @override
+  // Future<Either<Failure, UserEntity>> signInWithApple() async {
+  //   try{
+  //     var user = await firebaseAuthService.signInWithApple();
+  //     return right(UserModel.fromFirebaseUser(user));
+  //   }on CustomException catch (e) {
+  //     return left(ServerFailure(e.message));
+  //   } catch (e) {
+  //     log('Exception in signInWithFacebook: $e');
+  //     return left(ServerFailure("لقد حدث خطأ ما الرجاء المحاوله مرة اخري"));
+  //   }
+  // }
 }

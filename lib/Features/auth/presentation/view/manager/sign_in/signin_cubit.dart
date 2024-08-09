@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -11,6 +10,7 @@ class SignInCubit extends Cubit<SignInState> {
   SignInCubit(this.authRepo) : super(SignInInitial());
 
   final AuthRepo authRepo;
+  //login using email and password
   Future<void> logInUser(String email, String password) async {
     emit(SignInLoading());
     final result = await authRepo.signInWithEmailAndPassword(email, password);
@@ -20,4 +20,36 @@ class SignInCubit extends Cubit<SignInState> {
               userEntity: userEntity,
             )));
   }
+
+  //login using your gmail
+  Future<void> logInWithGoogle() async {
+    emit(SignInLoading());
+    final result = await authRepo.signInWithGoogle();
+    result.fold(
+        (failure) => emit(SignInFailure(message: failure.message)),
+        (userEntity) => emit(SignInSuccess(
+              userEntity: userEntity,
+            )));
+  }
+
+  //login using your facebook
+  Future<void> logInWithFacebook() async {
+    emit(SignInLoading());
+    final result = await authRepo.signInWithFacebook();
+    result.fold(
+        (failure) => emit(SignInFailure(message: failure.message)),
+        (userEntity) => emit(SignInSuccess(
+              userEntity: userEntity,
+            )));
+  }
+  // //login using Apple
+  // Future<void> logInWithApple() async {
+  //   emit(SignInLoading());
+  //   final result = await authRepo.signInWithApple();
+  //   result.fold(
+  //       (failure) => emit(SignInFailure(message: failure.message)),
+  //       (userEntity) => emit(SignInSuccess(
+  //             userEntity: userEntity,
+  //           )));
+  // }
 }

@@ -2,6 +2,7 @@
     "cmake.sourceDirectory": "/home/ahmedramy/FlutterProjects/Fruit-app/linux/flutter",
     "cmake.configureOnOpen": true,
     "cSpell.words": [
+        "ABCDEFGHIJKLMNOPQRSTUVXYZ",
         "Autovalidate",
         "Cupertino",
         "dartz",
@@ -10,6 +11,7 @@
         "fruitapp",
         "khorizontal",
         "Perferences",
+        "signin",
         "signup",
         "إنشاء",
         "اتصالك",
@@ -24,6 +26,7 @@
         "السري",
         "الشروط",
         "المحاولة",
+        "المحاوله",
         "المرور",
         "الموافقة",
         "بالانترنت",

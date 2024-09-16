@@ -5,6 +5,7 @@ import 'package:fruitapp/Features/auth/presentation/view/widgets/dont_have_an_ac
 import 'package:fruitapp/Features/auth/presentation/view/widgets/or_divider.dart';
 import 'package:fruitapp/Features/auth/presentation/view/widgets/password_field.dart';
 import 'package:fruitapp/Features/auth/presentation/view/widgets/social_login_button.dart';
+import 'package:fruitapp/Features/home/presentation/view/home_view.dart';
 import 'package:fruitapp/core/constants.dart';
 import 'package:fruitapp/core/helper/build_error_bar.dart';
 import 'package:fruitapp/core/utils/app_colors.dart';
@@ -69,7 +70,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     buildErrorMessage(context, state.message);
                   }
                   if (state is SignInSuccess) {
-                    Navigator.of(context).pop();
+                   Navigator.pushNamed(context, HomeView.routeName);
                   }
                 },
                 builder: (context, state) {

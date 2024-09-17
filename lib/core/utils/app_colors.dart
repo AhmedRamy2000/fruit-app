@@ -13,5 +13,6 @@ abstract class AppColors{
   static const Color hintColor = Color(0xFF949d9e);
   static const Color iconColor = Color(0xFFc9cecf);
   static const Color dividerColor = Color(0xFFdcdede);
+  static const Color gray400Color = Color(0xFF949D9E);
   
 }

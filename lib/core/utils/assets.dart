@@ -41,4 +41,5 @@ class Assets {
   static const String notification = "assets/images/notification.svg";
   static const String filter = "assets/images/setting-4.svg";
   static const String searchIcon = "assets/images/search-normal.svg";
+  static const String imageGrapesTest = "assets/images/grapes_test.png";
 }
